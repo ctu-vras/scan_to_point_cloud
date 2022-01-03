@@ -1,0 +1,9 @@
+<library path="lib/libscan_to_point_cloud_plugins">
+  <class name="scan_to_point_cloud/scan_to_point_cloud"
+         type="scan_to_point_cloud::ScanToPointCloud"
+         base_class_type="nodelet::Nodelet">
+    <description>
+  	  Nodelet converting laser scans to point clouds.
+    </description>
+  </class>
+</library>
