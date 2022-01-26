@@ -17,9 +17,9 @@ namespace scan_to_point_cloud
     class ScanToPointCloud: public nodelet::Nodelet
     {
     public:
-        ScanToPointCloud() {}
-        virtual ~ScanToPointCloud() {}
-        void onInit()
+        ScanToPointCloud() = default;
+        ~ScanToPointCloud() override = default;
+        void onInit() override
         {
             ros::NodeHandle nh = getNodeHandle();
             ros::NodeHandle pnh = getPrivateNodeHandle();
@@ -64,7 +64,7 @@ namespace scan_to_point_cloud
 
         void convertScan(const sensor_msgs::LaserScan& scan)
         {
-            ros::Duration scan_duration(scan.ranges.size() * scan.time_increment);
+            ros::Duration scan_duration(double(scan.ranges.size()) * scan.time_increment);
             auto scan_finished = scan.header.stamp + scan_duration;
             auto target_frame = target_frame_.empty() ? scan.header.frame_id : target_frame_;
             auto fixed_frame = fixed_frame_.empty() ? scan.header.frame_id : fixed_frame_;
@@ -95,8 +95,8 @@ namespace scan_to_point_cloud
         }
 
     protected:
-        std::string target_frame_ = "";
-        std::string fixed_frame_ = "";
+        std::string target_frame_;
+        std::string fixed_frame_;
         /**
          * @brief channelOptions Channels to extract.
          *
