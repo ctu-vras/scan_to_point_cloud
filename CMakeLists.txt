@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 2.8.3)
-project(scan_to_point_cloud)
+cmake_minimum_required(VERSION 3.0)
+project(scan_to_point_cloud VERSION 1.0.0)
 
 add_compile_options(-std=c++14)
 
